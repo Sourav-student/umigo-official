@@ -1,0 +1,155 @@
+{
+  "keywords": [
+    {
+      "id": 1,
+      "keyword": "Travel",
+      "related_keywords": ["beach", "wandering", "adventure", "road trip", "sightseeing", "backpacking"],
+      "image_url": "/1.png"
+    },
+    {
+      "id": 2,
+      "keyword": "Fitness",
+      "related_keywords": ["gym", "yoga", "strength training", "cardio", "pilates", "wellness"],
+      "image_url": "/2.png"
+    },
+    {
+      "id": 3,
+      "keyword": "Cooking",
+      "related_keywords": ["baking", "grilling", "recipes", "gourmet", "kitchen", "meal prep"],
+      "image_url": "/3.png"
+    },
+    {
+      "id": 4,
+      "keyword": "Photography",
+      "related_keywords": ["DSLR", "portrait", "editing", "landscapes", "lighting", "street photography"],
+      "image_url": "/4.png"
+    },
+    {
+      "id": 5,
+      "keyword": "Music",
+      "related_keywords": ["instruments", "concerts", "playlists", "singing", "songwriting", "headphones"],
+      "image_url": "/5.png"
+    },
+    {
+      "id": 6,
+      "keyword": "Movies",
+      "related_keywords": ["cinema", "action", "drama", "comedy", "thriller", "streaming"],
+      "image_url": "/6.png"
+    },
+    {
+      "id": 7,
+      "keyword": "Gaming",
+      "related_keywords": ["esports", "consoles", "PC gaming", "RPG", "multiplayer", "streaming"],
+      "image_url": "/7.png"
+    },
+    {
+      "id": 8,
+      "keyword": "Coffee",
+      "related_keywords": ["espresso", "cappuccino", "latte", "beans", "café", "barista", "tea", "tea tea", "coffee meetup"],
+      "image_url": "/8.png"
+    },
+    {
+      "id": 9,
+      "keyword": "Reading",
+      "related_keywords": ["novels", "fiction", "non-fiction", "libraries", "ebooks", "poetry"],
+      "image_url": "/9.png"
+    },
+    {
+      "id": 10,
+      "keyword": "Podcasts",
+      "related_keywords": ["storytelling", "interviews", "news", "true crime", "comedy", "self-help"],
+      "image_url": "/10.png"
+    },
+    {
+      "id": 11,
+      "keyword": "Tech",
+      "related_keywords": ["gadgets", "AI", "programming", "apps", "innovation", "startups", "code", "development", "coding", "dsa"],
+      "image_url": "/11.png"
+    },
+    {
+      "id": 12,
+      "keyword": "Fashion/Shopping",
+      "related_keywords": ["trends", "clothing", "accessories", "boutiques", "online shopping", "styling"],
+      "image_url": "/12.png"
+    },
+    {
+      "id": 13,
+      "keyword": "Hiking",
+      "related_keywords": ["trails", "mountains", "trekking", "backpacking", "nature", "adventure"],
+      "image_url": "/13.png"
+    },
+    {
+      "id": 14,
+      "keyword": "Sports",
+      "related_keywords": ["football", "cricket", "basketball", "tennis", "athletics", "training", "badminton", "wwe"],
+      "image_url": "/14.png"
+    },
+    {
+      "id": 15,
+      "keyword": "Art",
+      "related_keywords": ["painting", "sketching", "sculpture", "galleries", "exhibitions", "design"],
+      "image_url": "planBG/Art",
+      "extra_link": "/15.png"
+    },
+    {
+      "id": 16,
+      "keyword": "Foodie",
+      "related_keywords": ["restaurants", "street food", "gourmet", "tasting", "desserts", "cuisines"],
+      "image_url": "/16.png"
+    },
+    {
+      "id": 17,
+      "keyword": "Party",
+      "related_keywords": ["nightlife", "clubbing", "celebrations", "music", "cocktails", "dance floor"],
+      "image_url": "/17.png"
+    },
+    {
+      "id": 18,
+      "keyword": "Meditation",
+      "related_keywords": ["mindfulness", "breathing", "calm", "yoga", "spirituality", "relaxation"],
+      "image_url": "/18.png"
+    },
+    {
+      "id": 19,
+      "keyword": "Pets",
+      "related_keywords": ["dogs", "cats", "grooming", "adoption", "training", "pet care"],
+      "image_url": "/19.png"
+    },
+    {
+      "id": 20,
+      "keyword": "Cycling",
+      "related_keywords": ["road bike", "mountain bike", "trails", "gear", "fitness", "speed"],
+      "image_url": "/20.png"
+    },
+    {
+      "id": 21,
+      "keyword": "Jogging",
+      "related_keywords": ["running", "track", "marathon", "shoes", "training", "cardio"],
+      "image_url": "/21.png"
+    },
+    {
+      "id": 22,
+      "keyword": "DJ Dance",
+      "related_keywords": ["beats", "turntables", "remix", "EDM", "clubbing", "mixing"],
+      "image_url": "/22.png"
+    },
+    {
+      "id": 23,
+      "keyword": "Camping Bonfire",
+      "related_keywords": ["tents", "outdoors", "marshmallows", "stargazing", "hiking", "adventure"],
+      "image_url": "/23.png"
+    },
+    {
+      "id": 24,
+      "keyword": "Swimming",
+      "related_keywords": ["pool", "freestyle", "diving", "strokes", "beach", "water sports"],
+      "image_url": "/24.png"
+    },
+    {
+      "id": 25,
+      "keyword": "Long Drives",
+      "related_keywords": ["road trip", "scenic routes", "highways", "car music", "adventure", "getaway"],
+      "image_url": "/25.png"
+    }
+  ]
+}
