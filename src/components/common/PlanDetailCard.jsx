@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoArrowBack } from 'react-icons/io5';
 import { BsChatDots, BsClock, BsFilm } from 'react-icons/bs';
 // import { IoLocation } from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
+import BannerData from "../../assets/keywordsforBanner.json";
 
 function PlanDetailCard({ plan, onClose, onApproach, onChat, join, onJoin }) {
   if (!plan) return null;
@@ -16,6 +17,56 @@ function PlanDetailCard({ plan, onClose, onApproach, onChat, join, onJoin }) {
     e.stopPropagation();
     if (onChat) onChat();
   };
+
+  const [bannerImg, setBannerImg] = useState("");
+
+  // PROCESS TO FIND BANNER
+  useEffect(() => {
+    function findKeyword(subtitle) {
+      if (!subtitle) return null;
+      const query = plan.subtitle.toLowerCase();
+
+      const exactMatch = BannerData.keywords.find(
+        (k) => k.keyword.toLowerCase() === query
+      );
+      if (exactMatch) return exactMatch.image_url;
+
+      const relatedMatch = BannerData.keywords.find((k) =>
+        k.related_keywords.some((r) =>
+          r.toLowerCase().includes(query)
+        )
+      );
+      if (relatedMatch) return relatedMatch.image_url;
+
+      const getSimilarity = (a, b) => {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        let matches = 0;
+        const len = Math.min(a.length, b.length);
+        for (let i = 0; i < len; i++) {
+          if (a[i] === b[i]) matches++;
+        }
+        return matches / Math.max(a.length, b.length);
+      };
+
+      let bestMatch = null;
+      let highestScore = 0;
+
+      BannerData.keywords.forEach((k) => {
+        const score = getSimilarity(query, k.keyword);
+        if (score > highestScore) {
+          highestScore = score;
+          bestMatch = k;
+        }
+      });
+
+      return highestScore >= 0.5 ? bestMatch?.image_url : null;
+    }
+
+    const matchedImage = findKeyword(plan.subtitle);
+    setBannerImg(matchedImage || plan.bannerImage || "");
+  }, [plan.subtitle, plan.bannerImage]);
+
 
   return (
     <div className="fixed inset-0 z-50 bg-black/30 flex items-center justify-center p-4" onClick={onClose}>
@@ -38,7 +89,7 @@ function PlanDetailCard({ plan, onClose, onApproach, onChat, join, onJoin }) {
         <div className="relative h-40">
           {/* Decorative Movie Reels */}
           <div className="absolute inset-0 opacity-70">
-            <img src={plan.bannerImage} alt="" className="w-full h-full object-cover" />
+            <img src={bannerImg} alt="" className="w-full h-full object-cover" />
             {/* <div className="absolute top-4 left-4 w-20 h-20 rounded-full border-4 border-white/30"></div>
             <div className="absolute bottom-4 right-4 w-20 h-20 rounded-full border-4 border-white/30"></div> */}
           </div>
@@ -48,7 +99,7 @@ function PlanDetailCard({ plan, onClose, onApproach, onChat, join, onJoin }) {
             <NavLink to={`/user/${plan.id}`}>
               <img
                 src={plan.avatarUrl || 'https://randomuser.me/api/portraits/men/1.jpg'}
-                alt={plan.name}
+                alt={plan.host.name}
                 className="w-full h-full rounded-full object-cover border-4 border-white shadow-md"
               />
             </NavLink>

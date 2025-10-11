@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import BannerData from "../../assets/keywordsforBanner.json";
 
 function PlanCard({
   bannerImage,
@@ -27,6 +28,8 @@ function PlanCard({
   //   }
   // };
 
+  const [bannerImg, setBannerImg] = useState("");
+
   const handleJoinClick = (e) => {
     // Stop event propagation to prevent card click
     e.stopPropagation();
@@ -35,6 +38,54 @@ function PlanCard({
       onJoin(e);
     }
   };
+
+  // PROCESS TO FIND BANNER
+  useEffect(() => {
+    function findKeyword(subtitle) {
+      if (!subtitle) return null;
+      const query = subtitle.toLowerCase();
+
+      const exactMatch = BannerData.keywords.find(
+        (k) => k.keyword.toLowerCase() === query
+      );
+      if (exactMatch) return exactMatch.image_url;
+
+      const relatedMatch = BannerData.keywords.find((k) =>
+        k.related_keywords.some((r) =>
+          r.toLowerCase().includes(query)
+        )
+      );
+      if (relatedMatch) return relatedMatch.image_url;
+
+      const getSimilarity = (a, b) => {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        let matches = 0;
+        const len = Math.min(a.length, b.length);
+        for (let i = 0; i < len; i++) {
+          if (a[i] === b[i]) matches++;
+        }
+        return matches / Math.max(a.length, b.length);
+      };
+
+      let bestMatch = null;
+      let highestScore = 0;
+
+      BannerData.keywords.forEach((k) => {
+        const score = getSimilarity(query, k.keyword);
+        if (score > highestScore) {
+          highestScore = score;
+          bestMatch = k;
+        }
+      });
+
+      return highestScore >= 0.5 ? bestMatch?.image_url : null;
+    }
+
+    const matchedImage = findKeyword(subtitle);
+    setBannerImg(matchedImage || bannerImage || "");
+  }, [subtitle, bannerImage]);
+
 
   return (
     <div
@@ -47,8 +98,16 @@ function PlanCard({
     >
       {/* Banner */}
       <div
-        className="relative h-28 w-full bg-cover bg-center"
-        style={{ backgroundImage: bannerImage ? `url(${bannerImage})` : 'none' }}
+        className="relative h-32 w-full bg-cover bg-center"
+        style={{
+          backgroundImage: bannerImg
+            ? `url("${bannerImg}")`
+            : bannerImage
+              ? `url("${bannerImage}")`
+              : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
         <div className="relative inset-0 bg-[#ff5500]/10 z-0" />
         {/* Avatar overlapping the banner */}

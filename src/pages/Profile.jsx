@@ -22,32 +22,7 @@ const Profile = () => {
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
   const [profileError, setProfileError] = useState(null);
 
-  const [planRequests, setPlanRequests] = useState([
-    {
-      id: '1',
-      title: 'Coffee Meetup',
-      location: 'Starbucks, Connaught Place',
-      time: '2024-09-10T15:00:00Z',
-      requester: {
-        id: 'user2',
-        name: 'Alex Johnson',
-        avatar: '👨‍💼'
-      },
-      status: 'pending'
-    },
-    {
-      id: '2',
-      title: 'Study Session',
-      location: 'Central Library',
-      time: '2024-09-12T10:00:00Z',
-      requester: {
-        id: 'user3',
-        name: 'Sarah Williams',
-        avatar: '👩‍🎓'
-      },
-      status: 'pending'
-    }
-  ]);
+  const [planRequests, setPlanRequests] = useState([]);
 
   const [location, setLocation] = useState("Current Location");
   const [showEditProfile, setShowEditProfile] = useState(false);
