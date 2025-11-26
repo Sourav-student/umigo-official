@@ -55,12 +55,12 @@ export default function Header() {
       navigate('/login', { state: { from: location.pathname } });
       return false;
     }
-    console.log("gloww enable in header : ",glowEnabled)
+    console.log("gloww enable in header : ", glowEnabled)
     try {
       if (!glowEnabled) {
         // If enabling glow mode, open the modal
         setIsGlowModeModalOpen(true);
-        
+
         return true;
       } else {
         // If disabling glow mode, just toggle it off
@@ -71,7 +71,7 @@ export default function Header() {
       return false;
     }
   };
-  
+
   // Handle saving glow mode settings from the modal
   const handleGlowModeSave = async (formData) => {
 
@@ -84,7 +84,7 @@ export default function Header() {
         // await userAPI.updateGlowSettings(formData);
         setIsGlowModeModalOpen(false);
       }
-      return success; 
+      return success;
     } catch (error) {
       console.error('Error saving glow mode settings:', error);
       return false;
@@ -149,42 +149,51 @@ export default function Header() {
               </button>
             ))}
           </nav>
-          {/* Right icons + auth + glow toggle */}
-          <div className="flex items-center gap-4">
 
-            {/* Glow switch for home screen */}
-            {isGlowVisible && (
-              <div className="flex items-center gap-5">
-                <button
-                  className="text-2xl cursor-pointer text-gray-600 hover:text-[#FF5500] transition-colors"
-                  onClick={toggleSearch}
-                  aria-label="Search"
-                >
-                  <IoSearch />
-                </button>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">Glow Mode</span>
-                  <div 
-                    onClick={handleGlowModeToggle}
-                    className={[
-                      'relative h-6 w-14 rounded-full transition-colors cursor-pointer shrink-0 flex items-center px-1',
-                      glowEnabled ? 'bg-[#ff5500]' : 'bg-gray-200'
-                    ].join(' ')}
-                    role="switch"
-                    aria-checked={glowEnabled}
-                    aria-label="Toggle glow mode"
-                    tabIndex={0}
+          {/* Right icons + auth + glow toggle */}
+          {/* Glow switch for home screen */}
+          <div className="flex items-center gap-4">
+            {!isAuthenticated ?
+              <NavLink
+                to="/login"
+                className="mr-5 px-6 py-3 rounded-full font-semibold bg-orange-500 text-white hover:bg-orange-600 transition duration-300 shadow-sm hover:shadow-md"
+              >
+                Login / Signup
+              </NavLink>
+              :
+              (isGlowVisible && (
+                <div className="flex items-center gap-5">
+                  <button
+                    className="text-2xl cursor-pointer text-gray-600 hover:text-[#FF5500] transition-colors"
+                    onClick={toggleSearch}
+                    aria-label="Search"
                   >
-                    <span
+                    <IoSearch />
+                  </button>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-gray-600">Glow Mode</span>
+                    <div
+                      onClick={handleGlowModeToggle}
                       className={[
-                        'h-5 w-5 rounded-full bg-white shadow-sm transition-transform',
-                        glowEnabled ? 'translate-x-8' : 'translate-x-0'
+                        'relative h-6 w-14 rounded-full transition-colors cursor-pointer shrink-0 flex items-center px-1',
+                        glowEnabled ? 'bg-[#ff5500]' : 'bg-gray-200'
                       ].join(' ')}
-                    />
+                      role="switch"
+                      aria-checked={glowEnabled}
+                      aria-label="Toggle glow mode"
+                      tabIndex={0}
+                    >
+                      <span
+                        className={[
+                          'h-5 w-5 rounded-full bg-white shadow-sm transition-transform',
+                          glowEnabled ? 'translate-x-8' : 'translate-x-0'
+                        ].join(' ')}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              ))
+            }
           </div>
         </div>
       </header>

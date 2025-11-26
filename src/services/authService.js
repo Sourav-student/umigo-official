@@ -79,7 +79,7 @@ api.interceptors.response.use(
       } else if (response.status === 404) {
         errorMessage = "The requested resource was not found";
       } else if (response.status >= 500) {
-        errorMessage = "This email or phone number is already registered. Please log in to continue.";
+        errorMessage = "Please log in to continue.";
       }
 
       // If the server returns a 500 but the error message suggests auth issues, treat it as auth error
